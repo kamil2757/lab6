@@ -196,99 +196,99 @@
 #                 print(round(matrix[i][j], r), end=" ")
 #             print()
 #
-# def verifyMatrix(matrix):
-#     if len(matrix) == 0:
-#         raise ValueError('матрица пустая')
-#
-#     ln = len(matrix[0])
-#     for a in matrix:
-#         if len(a) != ln:
-#             raise ValueError('матрица имеет строки разной длины')
-#
-#
-# def transposition(m1):
-#     verifyMatrix(m1)
-#
-#     res = []
-#     for i in range(len(m1[0])):
-#         a = []
-#         for arr in m1:
-#             a.append(arr[i])
-#
-#         res.append(a)
-#     return res
-#
-#
-# def summation(m1, m2):
-#     verifyMatrix(m1)
-#     verifyMatrix(m2)
-#
-#     if len(m1) != len(m2):
-#         raise ValueError('Матрицы нельзя суммировать: разные длины')
-#
-#     if not isinstance(m1[0], (list, tuple)):
-#         return [m1[i] + m2[i] for i in range(len(m1))]
-#
-#     if len(m1[0]) != len(m2[0]):
-#         raise ValueError('Матрицы нельзя суммировать: разная длина строк')
-#
-#     res = []
-#     for i in range(len(m1)):
-#         arr = []
-#         for j in range(len(m1[0])):
-#             arr.append(m1[i][j] + m2[i][j])
-#         res.append(arr)
-#     return res
-#
-#
-# def subtraction(m1, m2):
-#     verifyMatrix(m1)
-#     verifyMatrix(m2)
-#
-#     if len(m1) != len(m2):
-#         raise ValueError('Матрицы нельзя вычитать: разные длины')
-#
-#     if not isinstance(m1[0], (list, tuple)):
-#         return [m1[i] - m2[i] for i in range(len(m1))]
-#
-#     if len(m1[0]) != len(m2[0]):
-#         raise ValueError('Матрицы нельзя вычитать: разная длина строк')
-#
-#     res = []
-#     for i in range(len(m1)):
-#         arr = []
-#         for j in range(len(m1[0])):
-#             arr.append(m1[i][j] - m2[i][j])
-#         res.append(arr)
-#     return res
-#
-#
-# def multiplicationMatrix(m1, m2):
-#     verifyMatrix(m1)
-#     verifyMatrix(m2)
-#
-#     if len(m1[0]) != len(m2):
-#         raise ValueError('Матрицы нельзя перемножать: внутренние размеры не совпадают')
-#
-#     res = []
-#     m2_t = transposition(m2)
-#
-#     #перебор столбцов m1
-#     for ln in m1:
-#         arr = []
-#         #перебор колонок m2
-#         for cn in m2_t:
-#             sm = 0
-#             #суммируем элементы столбцов и колонок для получения нужного элемента
-#             for i in range(len(ln)):
-#                 sm += ln[i] * cn[i]
-#             #добавляем элемент в строку
-#             arr.append(sm)
-#         #добавляем строку в массив
-#         res.append(arr)
-#     return res
-#
-#
-#
-# showMatrix(multiplicationMatrix([[1, 2, 3], [4, 8, 6]], [[1, 2], [2, 3], [4, 5]]))
-# showMatrix(summation([1, 2],[3, 4]))
+def verifyMatrix(matrix):
+    if len(matrix) == 0:
+        raise ValueError('матрица пустая')
+
+    ln = len(matrix[0])
+    for a in matrix:
+        if len(a) != ln:
+            raise ValueError('матрица имеет строки разной длины')
+
+
+def transposition(m1):
+    verifyMatrix(m1)
+
+    res = []
+    for i in range(len(m1[0])):
+        a = []
+        for arr in m1:
+            a.append(arr[i])
+
+        res.append(a)
+    return res
+
+
+def summation(m1, m2):
+    verifyMatrix(m1)
+    verifyMatrix(m2)
+
+    if len(m1) != len(m2):
+        raise ValueError('Матрицы нельзя суммировать: разные длины')
+
+    if not isinstance(m1[0], (list, tuple)):
+        return [m1[i] + m2[i] for i in range(len(m1))]
+
+    if len(m1[0]) != len(m2[0]):
+        raise ValueError('Матрицы нельзя суммировать: разная длина строк')
+
+    res = []
+    for i in range(len(m1)):
+        arr = []
+        for j in range(len(m1[0])):
+            arr.append(m1[i][j] + m2[i][j])
+        res.append(arr)
+    return res
+
+
+def subtraction(m1, m2):
+    verifyMatrix(m1)
+    verifyMatrix(m2)
+
+    if len(m1) != len(m2):
+        raise ValueError('Матрицы нельзя вычитать: разные длины')
+
+    if not isinstance(m1[0], (list, tuple)):
+        return [m1[i] - m2[i] for i in range(len(m1))]
+
+    if len(m1[0]) != len(m2[0]):
+        raise ValueError('Матрицы нельзя вычитать: разная длина строк')
+
+    res = []
+    for i in range(len(m1)):
+        arr = []
+        for j in range(len(m1[0])):
+            arr.append(m1[i][j] - m2[i][j])
+        res.append(arr)
+    return res
+
+
+def multiplicationMatrix(m1, m2):
+    verifyMatrix(m1)
+    verifyMatrix(m2)
+
+    if len(m1[0]) != len(m2):
+        raise ValueError('Матрицы нельзя перемножать: внутренние размеры не совпадают')
+
+    res = []
+    m2_t = transposition(m2)
+
+    #перебор столбцов m1
+    for ln in m1:
+        arr = []
+        #перебор колонок m2
+        for cn in m2_t:
+            sm = 0
+            #суммируем элементы столбцов и колонок для получения нужного элемента
+            for i in range(len(ln)):
+                sm += ln[i] * cn[i]
+            #добавляем элемент в строку
+            arr.append(sm)
+        #добавляем строку в массив
+        res.append(arr)
+    return res
+
+
+
+showMatrix(multiplicationMatrix([[1, 2, 3], [4, 8, 6]], [[1, 2], [2, 3], [4, 5]]))
+showMatrix(summation([1, 2],[3, 4]))
